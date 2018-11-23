@@ -8,6 +8,12 @@ class CharacterView extends Component {
         super(props);
     }
 
+    static propTypes(){
+        return {
+            item: PropTypes.object
+        }
+    }
+
     render() {
         const {item} = this.props;
         return (
