@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-
-
 class CharacterView extends Component {
     constructor(props) {
         super(props);
     }
 
-    static propTypes(){
-        return {
+    static propTypes = {
             item: PropTypes.object
-        }
     }
 
     render() {
@@ -28,7 +24,5 @@ class CharacterView extends Component {
         )
     }
 }
-// CharacterView.propTypes = {
-//     item: PropTypes.object
-// };
+
 export default CharacterView;

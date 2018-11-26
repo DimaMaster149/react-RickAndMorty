@@ -11,18 +11,21 @@ class CharacterList extends Component {
         };
     }
 
-    componentDidMount() {
+    fetchCharacters = () =>{
         axios.get('https://rickandmortyapi.com/api/character/?page=1')
             .then(res => {
-                console.log(res.data.results);
-                let characters = res.data.results;
+                const characters = res.data.results;
                 this.setState(state => ({
-                    characters: this.state.characters.concat(characters)
+                    characters: state.characters.concat(characters)
                 }))
             })
             .catch(e => {
                 console.warn(`Errors with API: ${e.code} ${e.message}`);
             });
+    }
+
+    componentDidMount() {
+        this.fetchCharacters();
     }
 
     render() {
