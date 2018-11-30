@@ -11,7 +11,7 @@ class CharacterList extends Component {
         };
     }
 
-    fetchCharacters = () =>{
+    fetchCharacters = () => {
         axios.get('https://rickandmortyapi.com/api/character/?page=1')
             .then(res => {
                 const characters = res.data.results;
@@ -29,18 +29,25 @@ class CharacterList extends Component {
     }
 
     render() {
-        return (
-            <div className="page">
-                <div className="list">
-                    {this.state.characters.map((item, index) => (
-                    <CharacterView
-                        key={`item-key-${item.id}`}
-                        item={item}
-                    />
+        if(this.state.characters.length) {
+            return (
+                <div className="page">
+                    <div className="list">
+                        {this.state.characters.map((item, index) => (
+                            <CharacterView
+                                key={`item-key-${item.id}`}
+                                item={item}
+                            />
                         ))}
+                    </div>
                 </div>
-            </div>
-        )
+            );
+        }
+        else {
+            return (
+                <div>Loading data</div>
+            )
+        }
     }
 
 }
