@@ -1,45 +1,28 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import CharacterView from '../CharacterView';
+import CharacterView from '../CharacterView'
+import PropTypes from 'prop-types';
 
 class CharacterList extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            characters: []
-        };
     }
 
-    fetchCharacters = () => {
-        axios.get('https://rickandmortyapi.com/api/character/?page=1')
-            .then(res => {
-                const characters = res.data.results;
-                this.setState(state => ({
-                    characters: state.characters.concat(characters)
-                }))
-            })
-            .catch(e => {
-                console.warn(`Errors with API: ${e.code} ${e.message}`);
-            });
-    }
-
-    componentDidMount() {
-        this.fetchCharacters();
+    static propTypes = {
+            characters: PropTypes.array
     }
 
     render() {
-        if(this.state.characters.length) {
+        if(this.props.characters.length) {
             return (
                 <div className="page">
                     <div className="list">
-                        {this.state.characters.map((item, index) => (
-                            <CharacterView
-                                key={`item-key-${item.id}`}
-                                item={item}
+                        {this.props.characters.map((item, index) => (
+                          <CharacterView
+                            key={`item-key-${item.id}`}
+                            item={item}
                             />
-                        ))}
-                    </div>
+                            ))}
+                        </div>
                 </div>
             );
         }

@@ -37,6 +37,7 @@ code {
 
 .block__text{
   width:100%;
+  color:#A0522D;
   padding:10px 0 10px 2px;
   border-bottom:solid 2px #FFDAB9;
 }
@@ -44,3 +45,15 @@ code {
   border-bottom: none;
 }
 
+a{
+  text-decoration: none;
+  color:#A0522D;
+}
+
+.back{
+  font-size:16px;
+}
+.back:hover{
+  font-size:18px;
+  font-weight: 600;
+}
