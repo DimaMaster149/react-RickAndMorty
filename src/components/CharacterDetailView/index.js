@@ -11,24 +11,22 @@ class CharacterDetailView extends Component {
     };
   }
 
-    fetchCharacters = () => {
-        axios.get('https://rickandmortyapi.com/api/character/?page=1')
-            .then(res => {
-                const characters = res.data.results;
-                const item = characters.find(character => character.id == this.props.match.params.id);
+    fetchCharacter = () => {
+        axios.get(`https://rickandmortyapi.com/api/character/${this.props.match.params.id}`)
+            .then(response => {
                 this.setState(state => ({
-                    character: item
+                    character: response.data
                 }))
                 console.log(this.state.character);
             })
             .catch(e => {
                 console.warn(`Errors with API: ${e.code} ${e.message}`);
             });
-            
+
     }
 
     componentDidMount() {
-        this.fetchCharacters();
+        this.fetchCharacter();
     }
 
     render() {
