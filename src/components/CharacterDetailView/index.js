@@ -25,7 +25,12 @@ class CharacterDetailView extends Component {
 
     }
 
+    returnBack = () =>{
+      this.props.history.goBack();
+    }
+
     componentDidMount() {
+      console.log(this.props.location);
         this.fetchCharacter();
     }
 
@@ -37,7 +42,7 @@ class CharacterDetailView extends Component {
                 <div className="block__text"> Status: {character.status}</div>
                 <div className="block__text">Species: {character.species}</div>
                 <div className="block__text">Gender: {character.gender}</div>
-                <Link to={`/characters`} class="back"> Back </Link>
+                <button onClick={this.returnBack}> Back </button>
             </div>
         )
     }
