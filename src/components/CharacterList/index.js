@@ -14,8 +14,9 @@ class CharacterList extends Component {
     }
 
     fetchCharacters = () => {
+        let page = this.props.match.params.page || 1;
         console.log(this.props.match.params.page, 'page');
-        axios.get(`https://rickandmortyapi.com/api/character/?page=${this.props.match.params.page}`)
+        axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`)
             .then(res => {
                 console.log(res.data);
                 const characters = res.data.results;
